@@ -1,8 +1,6 @@
 from sqlmodel import Session
-from app.database import engine, create_db_and_tables
-from app.user.models import User
-from app.message.models import Message
-from app.crud import create_user, create_message
+from .database import create_db_and_tables, engine
+from .crud import create_user, create_message
 
 
 def create_test_data():

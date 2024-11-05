@@ -9,7 +9,6 @@ client = TestClient(app)
 
 @pytest.fixture(scope="module")
 def setup_database():
-    # Создаём таблицы перед тестами
     create_db_and_tables()
     yield
     with Session(engine) as session:
@@ -58,7 +57,7 @@ def test_send_message(session, setup_database):
     headers = {"Authorization": f"Bearer {token}"}
     response = client.post("/messages", headers=headers, json={
         "content": "Hello, World!",
-        "sender_id": 1,
+        "sender_id": 2,
         "channel_id": 1
     })
     assert response.status_code == 200
